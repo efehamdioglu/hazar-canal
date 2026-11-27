@@ -2,7 +2,7 @@
 
 hazarcanal.com için hazırlanmış yeniden tasarım önerisi. Tüm metinler, görseller ve videolar Hazar Canal'a aittir.
 
-Canlı önizleme: https://efehamdioglu.github.io/hazar-canal/
+Canlı önizleme: https://efehamdioglu.com/hazar-canal/
 
 - `site/` — yayınlanan statik site (HTML, CSS, JS, medya)
 - `build.py` — içeriği tutar ve sayfaları üretir: `python build.py`

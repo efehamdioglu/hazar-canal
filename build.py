@@ -9,7 +9,7 @@ MEDIA = "https://static.wixstatic.com/media/"
 VIDEO = "https://video.wixstatic.com/video/"
 AUDIO = "https://music.wixstatic.com/mp3/584124_a6968e2524b84530b68977e4395fe0bd-320.mp3"
 # Sitenin yayınlandığı adres (paylaşım önizleme görseli için). Kendi alan adına taşınınca değiştirin.
-SITE_URL = "https://efehamdioglu.github.io/hazar-canal/"
+SITE_URL = "https://efehamdioglu.com/hazar-canal/"
 # Önizleme sürümü arama motorlarında asıl siteyle yarışmasın. Asıl siteye dönüşünce False yapın.
 NOINDEX = True
 EMAIL = "hazarcanal@icloud.com"
