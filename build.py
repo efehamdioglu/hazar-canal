@@ -273,7 +273,7 @@ def footer():
   <div class="wrap">
     <div class="foot__grid">
       <div><a class="brand" href="index.html">Hazar Canal<small lang="en">Perfumes</small></a>
-        <p class="mute" style="margin-top:1.25rem;max-width:26ch">Parfüm Dünyasına Adım Atın</p></div>
+        <p class="mute" style="margin-top:1.5rem;max-width:26ch">Parfüm Dünyasına Adım Atın</p></div>
       {col("Extrait de Parfum", [(p["name"], p["slug"] + ".html", "") for p in EXTRAIT])}
       {col("Eau de Parfum", [(p["name"], p["slug"] + ".html", "") for p in EDP])}
       {col("Keşfet", [("Kişilik Testi", "test.html", ""), ("Deneme Seti", "index.html#deneme-seti", ""), ("Atölye", "index.html#atolye", "")])}
@@ -304,7 +304,7 @@ def page(fname, title, desc, body, accent="", cur="", ogimg=None):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://static.wixstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,800;1,6..96,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Jost:wght@200;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 <style>.sr{{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}}</style>
 <script>try{{if(localStorage.getItem('hc-store')==='int')document.documentElement.dataset.store='int'}}catch(e){{}}</script>
@@ -325,7 +325,7 @@ def page(fname, title, desc, body, accent="", cur="", ogimg=None):
 def invite():
     return '''<section class="invite" aria-labelledby="inv-h">
   <div class="wrap invite__in rv">
-    <div><h2 class="display h-md" id="inv-h">Hangi parfüm senin için?</h2>
+    <div><h2 class="display h-head" id="inv-h">Hangi parfüm senin için?</h2>
       <p class="mute">Kişilik testini cevaplayın, size uygun parfümü bulalım.</p></div>
     <a class="btn" href="test.html">Kişilik Testi</a>
   </div>
@@ -340,7 +340,7 @@ def home():
         relics += f'''<article class="relic rv" data-p="{p["slug"]}" style="--d:{k * .12}s">
       <div class="relic__img"><img src="{im(p["bottle"], 900)}" alt="{e(p["name"])} Extrait de Parfum şişesi" loading="lazy"></div>
       <div class="relic__body">
-        <h3 class="display h-md"><a class="cover" href="{p["slug"]}.html">{tx(p["name"])}</a></h3>
+        <h3 class="display h-head"><a class="cover" href="{p["slug"]}.html">{tx(p["name"])}</a></h3>
         {notes_inline(p["card_notes"])}
         <div class="btn-row">{buy(p, first_solid=True, only_first=True)}<a class="btn" href="{p["slug"]}.html" tabindex="-1" aria-hidden="true">İncele</a></div>
       </div>
@@ -353,7 +353,7 @@ def home():
       <img src="{im(p["image"], 1400)}" alt="{e(p["name"])} Eau de Parfum" loading="lazy">
       <div class="edp__body">
         {f'<div>{badge}</div>' if badge else ''}
-        <h3 class="display h-lg"><a class="cover" href="{p["slug"]}.html">{tx(p["name"])}</a></h3>
+        <h3 class="display h-head"><a class="cover" href="{p["slug"]}.html">{tx(p["name"])}</a></h3>
         <div class="edp__foot">{notes_inline(p["card_notes"])}<div class="btn-row">{buy(p, first_solid=False, only_first=True)}</div></div>
       </div>
     </article>'''
@@ -363,7 +363,7 @@ def home():
         <video muted loop playsinline preload="none" poster="{poster(vid_id)}" data-src="{vid(vid_id)}" aria-label="{e(p["name"])} filmi"></video>
         <div class="film__cap">
           <p class="label"><b>{label}</b></p>
-          <h3 class="display h-lg">{tx(p["name"])}</h3>
+          <h3 class="display h-head">{tx(p["name"])}</h3>
           <p class="italic">{e(tag)}</p>
           <a class="tlink" href="{p["slug"]}.html">Kokuyu keşfet</a>
         </div>
@@ -373,7 +373,7 @@ def home():
   <div class="hero__media"><video muted loop playsinline autoplay poster="{poster(atlas["video"])}" data-src="{vid(atlas["video"])}" aria-hidden="true"></video></div>
   <div class="wrap hero__in">
     <p class="label"><b lang="en">Extrait de Parfum</b> &nbsp;·&nbsp; <span lang="en">Unisex</span></p>
-    <h1 class="display h-xl hero__name" id="hero-h">Atlas</h1>
+    <h1 class="display h-hero hero__name" id="hero-h">Atlas</h1>
     <div class="hero__row">
       <p class="lede italic">Sessiz lüksün zirvesi.</p>
       <div class="btn-row"><a class="btn" href="atlas.html">İncele</a>{buy(atlas)}</div>
@@ -386,7 +386,7 @@ def home():
 <section class="sec sec--bone on-bone" id="extrait" aria-labelledby="ex-h">
   <div class="wrap">
     <div class="sec__head rv">
-      <div><p class="label">Koleksiyon · I</p><h2 class="display h-lg" id="ex-h" lang="en">Extrait de Parfum</h2></div>
+      <div><p class="label">Koleksiyon · I</p><h2 class="display h-head" id="ex-h" lang="en">Extrait de Parfum</h2></div>
       <p class="label" lang="en">Unisex</p>
     </div>
     <div class="relics">{relics}</div>
@@ -396,7 +396,7 @@ def home():
 <section class="sec" id="edp" aria-labelledby="edp-h">
   <div class="wrap">
     <div class="sec__head rv">
-      <div><p class="label">Koleksiyon · II</p><h2 class="display h-lg" id="edp-h" lang="en">Eau de Parfum</h2></div>
+      <div><p class="label">Koleksiyon · II</p><h2 class="display h-head" id="edp-h" lang="en">Eau de Parfum</h2></div>
     </div>
     <div class="edps">{edps}</div>
   </div>
@@ -417,7 +417,7 @@ def home():
     <figure class="split__img rv"><img src="{im(LINEUP, 1400)}" alt="Beş Hazar Canal şişesi yan yana: Devil, Şahmaran, Atlas, Barbaros ve Arora" loading="lazy"></figure>
     <div class="split__body rv" style="--d:.12s">
       <p class="label">Tester</p>
-      <h2 class="display h-lg" id="ds-h">Deneme Seti</h2>
+      <h2 class="display h-head" id="ds-h">Deneme Seti</h2>
       <p class="lede">Bu tester, deneme seti, imza kokunu bulman için tasarlandı. Koleksiyonun her karakterini deneyimle.</p>
       <ul class="ml-list" aria-label="Set içeriği">
         <li><a href="devil.html">Devil 5ml</a></li><li><a href="sahmaran.html">Şahmaran 5ml</a></li><li><a href="barbaros.html">Barbaros 5ml</a></li><li><a href="arora.html">Arora 5ml</a></li><li><a href="atlas.html">Atlas 5ml</a></li>
@@ -429,11 +429,11 @@ def home():
 
 <section class="sec" id="atolye" aria-labelledby="at-h">
   <div class="wrap">
-    <div class="sec__head rv"><div><p class="label">Atölye</p><h2 class="display h-lg" id="at-h" lang="en">Ultraniche<br>Design</h2></div></div>
+    <div class="sec__head rv"><div><p class="label">Atölye</p><h2 class="display h-head" id="at-h" lang="en">Ultraniche<br>Design</h2></div></div>
     <div class="craft">
       <figure class="craft__img rv"><img src="{im(SKETCH, 1200)}" alt="Şişe ve kapak tasarımlarının kurşun kalem eskizleriyle dolu bir defter" loading="lazy"><figcaption class="label">Eskiz defterinden</figcaption></figure>
       <div class="craft__items">
-        {"".join(f'<div class="craft__item rv"><h3 class="display h-md">{e(t)}</h3><p>{e(d)}</p></div>' for t, d in CRAFT)}
+        {"".join(f'<div class="craft__item rv"><h3 class="display h-head">{e(t)}</h3><p>{e(d)}</p></div>' for t, d in CRAFT)}
         <ul class="claims rv">
           <li>Niş Kalite Esans<br><span class="mute" lang="en">Niche Quality</span></li>
           <li>Uzun Süre Kalıcılık<br><span class="mute" lang="en">Long-Lasting</span></li>
@@ -450,9 +450,9 @@ def home():
 <section class="outro" aria-labelledby="out-h">
   <div class="wrap rv">
     <img class="mark" src="{im(LOGO, 500)}" alt="" loading="lazy">
-    <h2 class="display h-lg" id="out-h">Hazar Canal</h2>
+    <h2 class="display h-head" id="out-h">Hazar Canal</h2>
     <p class="italic">Parfüm Dünyasına Adım Atın</p>
-    <p class="label" style="margin-top:3.5rem">Bizi takip edin</p>
+    <p class="label" style="margin-top:4rem">Bizi takip edin</p>
     <div class="follow" style="margin-top:1rem">{ext(INSTAGRAM, "Instagram", "tlink")}{ext(TIKTOK, "TikTok", "tlink")}</div>
   </div>
 </section>'''
@@ -479,7 +479,7 @@ def product(p):
   <div class="phero__media">{media}</div>
   <div class="{'' if split else 'wrap '}phero__in">
     <p class="label"><b>{tx(p["kind"])}</b>{' &nbsp;·&nbsp; ' + e(p["gender"]) if p.get("gender") else ''}</p>
-    <h1 class="display h-xl" id="p-h" style="margin-left:-.04em">{tx(p["name"])}</h1>
+    <h1 class="display h-hero" id="p-h" style="margin-left:-.04em">{tx(p["name"])}</h1>
     <div class="phero__grid">
       <div style="display:grid;gap:1rem">
         <p class="lede italic">{e(p["tagline"])}</p>
@@ -499,7 +499,7 @@ def product(p):
     if p.get("character"): facts.append(("Koku Karakteri", e(p["character"])))
     if p.get("sister"):
         s = BY[p["sister"]]
-        facts.append(("Diğer yorumu", f'<a class="tlink" href="{s["slug"]}.html" style="font-size:.74rem">{tx(s["name"])} {tx(s["kind"])}</a>'))
+        facts.append(("Diğer yorumu", f'<a class="tlink" href="{s["slug"]}.html">{tx(s["name"])} {tx(s["kind"])}</a>'))
     facts_html = '<dl class="facts rv">' + "".join(f"<div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in facts) + "</dl>"
     story = p.get("story") or [p["tagline"]]
     story_html = "".join(f"<p>{e(s)}</p>" for s in story)
@@ -522,9 +522,9 @@ def product(p):
     <figure class="love__img{' love__img--cover' if cover else ''} rv"><img src="{im(img_id, 1100)}" alt="{e(alt)}" loading="lazy"></figure>
     <div class="rv" style="--d:.12s">
       <p class="label">Sana göre mi?</p>
-      <h2 class="display h-md" id="love-h" style="margin-top:.75rem">{e(p["love_title"])}</h2>
+      <h2 class="display h-head" id="love-h" style="margin-top:1rem">{e(p["love_title"])}</h2>
       <ol>{"".join(f"<li><span>{e(x)}</span></li>" for x in p["love"])}</ol>
-      {f'<p class="display h-sm italic love__end">{e(p["love_end"])}</p>' if p.get("love_end") else ''}
+      {f'<p class="display h-sub italic love__end">{e(p["love_end"])}</p>' if p.get("love_end") else ''}
       <div class="btn-row" style="margin-top:2rem">{buy(p, only_first=True)}</div>
     </div>
   </div>
@@ -537,7 +537,7 @@ def product(p):
     <figure class="love__img rv"><img src="{im(img_id, 1100)}" alt="{e(p["name"])} şişesi" loading="lazy"></figure>
     <div class="rv" style="--d:.12s">
       <p class="label">Koku Karakteri</p>
-      <h2 class="display h-lg" style="margin-top:.75rem">{"<br>".join(e(x.strip()) for x in p["character"].split("•"))}</h2>
+      <h2 class="display h-head" style="margin-top:1rem">{"<br>".join(e(x.strip()) for x in p["character"].split("•"))}</h2>
       <div class="btn-row" style="margin-top:2rem">{buy(p, only_first=True)}</div>
     </div>
   </div>
@@ -549,7 +549,7 @@ def product(p):
     body += f'''
 <section class="sec" aria-labelledby="n-h">
   <div class="wrap">
-    <div class="sec__head rv"><div><p class="label">{tx(p["name"])}</p><h2 class="display h-lg" id="n-h">Notaları</h2></div></div>
+    <div class="sec__head rv"><div><p class="label">{tx(p["name"])}</p><h2 class="display h-head" id="n-h">Notaları</h2></div></div>
     <div class="pyramid">{rows}</div>
   </div>
 </section>'''
@@ -564,13 +564,13 @@ def product(p):
     body += f'''
 <section class="sec" style="padding-top:0" aria-label="Atölye">
   <div class="wrap"><div class="craft__items" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr))">
-    {"".join(f'<div class="craft__item rv"><h2 class="display h-sm">{e(t)}</h2><p>{e(d)}</p></div>' for t, d in CRAFT)}
+    {"".join(f'<div class="craft__item rv"><h2 class="display h-sub">{e(t)}</h2><p>{e(d)}</p></div>' for t, d in CRAFT)}
   </div></div>
 </section>
 {invite()}
 <nav class="sister" aria-label="Diğer parfümler">
-  <a href="{prev["slug"]}.html" data-p="{prev["slug"]}"><span class="label">← Önceki</span><span class="display h-md">{tx(prev["name"])}</span><span class="label">{tx(prev["kind"])}</span></a>
-  <a href="{nxt["slug"]}.html" data-p="{nxt["slug"]}"><span class="label">Sonraki →</span><span class="display h-md">{tx(nxt["name"])}</span><span class="label">{tx(nxt["kind"])}</span></a>
+  <a href="{prev["slug"]}.html" data-p="{prev["slug"]}"><span class="label">← Önceki</span><span class="display h-head">{tx(prev["name"])}</span><span class="label">{tx(prev["kind"])}</span></a>
+  <a href="{nxt["slug"]}.html" data-p="{nxt["slug"]}"><span class="label">Sonraki →</span><span class="display h-head">{tx(nxt["name"])}</span><span class="label">{tx(nxt["kind"])}</span></a>
 </nav>
 <div class="buybar"><strong>{tx(p["name"])}</strong>{buy(p, only_first=True)}</div>'''
     desc = f'{full} — {p["tagline"]} Notalar: {", ".join(n for _, ns in p["pyramid"] for n in ns)}.'
@@ -637,7 +637,7 @@ def quiz():
   <div class="quiz__stage"><div class="wrap"><div class="quiz__in">
     <div class="quiz__intro">
       <p class="label">12 soru · 2 dakika</p>
-      <h1 class="display h-lg" id="quiz-h">Hazar Canal Parfüm Kişilik Testi</h1>
+      <h1 class="display h-head" id="quiz-h">Hazar Canal Parfüm Kişilik Testi</h1>
       <p class="lede">Soruları içinden geldiği gibi cevapla… Sana en uygun kokuyu bulalım.</p>
       <button type="button" class="btn btn--solid" id="q-start">Teste Başla</button>
     </div>
@@ -648,7 +648,7 @@ def quiz():
     </div>
     <div class="quiz__result" hidden aria-live="polite">
       <p class="label">Senin için en uygun parfüm</p>
-      <h2 class="display h-xl" id="r-name" tabindex="-1" style="margin-left:-.04em"></h2>
+      <h2 class="display h-hero" id="r-name" tabindex="-1" style="margin-left:-.04em"></h2>
       <p class="desc" id="r-desc"></p>
       <div class="btn-row">
         <a class="btn btn--solid" id="r-page" href="#">Parfümü İncele</a>
