@@ -33,14 +33,14 @@
     if (mega && !mega.hidden && !e.target.closest('#mega, [aria-controls="mega"]')) setMega(false);
   });
 
-  /* Mağaza: Türkiye / International */
-  const setStore = (v) => {
-    document.documentElement.dataset.store = v;
-    store.set('hc-store', v);
-    $$('[data-set-store]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.setStore === v)));
-  };
-  $$('[data-set-store]').forEach((b) => b.addEventListener('click', () => setStore(b.dataset.setStore)));
-  setStore(document.documentElement.dataset.store === 'int' ? 'int' : 'tr');
+  /* Dil menüsü: dışarı tıklayınca kapanır; İngilizce için seçilen bayrak hatırlanır */
+  const langs = $$('details.lang');
+  document.addEventListener('click', (e) => langs.forEach((d) => { if (!d.contains(e.target)) d.open = false; }));
+  addEventListener('keydown', (e) => { if (e.key === 'Escape') langs.forEach((d) => (d.open = false)); });
+  $$('details.lang a[data-flag]').forEach((a) => a.addEventListener('click', () => store.set('hc-flag', a.dataset.flag)));
+  if (document.documentElement.lang === 'en' && store.get('hc-flag') === 'us') {
+    $$('details.lang summary img').forEach((im) => (im.src = im.src.replace('gb.svg', 'us.svg')));
+  }
 
   /* Ses: Şahmaran — Hazar Canal */
   const audio = $('#hc-audio');
@@ -78,9 +78,28 @@
     $$('.rv').forEach((el) => ro.observe(el));
   } else $$('.rv').forEach((el) => el.classList.add('in'));
 
+  /* Koleksiyon dizini: satırın üzerine gelince sahnedeki görsel değişir */
+  const rows = $$('.row');
+  const stage = $('.index__stage');
+  if (rows.length && stage) {
+    const imgs = $$('.stage__frame img', stage);
+    const setRow = (r) => {
+      rows.forEach((x) => x.classList.toggle('is-on', x === r));
+      imgs.forEach((im, k) => im.classList.toggle('is-on', String(k) === r.dataset.i));
+      stage.dataset.p = r.dataset.p;
+      $('#stage-tag').textContent = r.dataset.tag;
+      $('#stage-kind').textContent = r.dataset.kind;
+    };
+    rows.forEach((r) => {
+      r.addEventListener('mouseenter', () => setRow(r));
+      r.addEventListener('focusin', () => setRow(r));
+    });
+    if (matchMedia('(min-width: 861px)').matches) setRow(rows[0]);
+  }
+
   /* Mobil satın alma çubuğu: girişteki düğmeler ekrandan çıkınca görünür */
   const buybar = $('.buybar');
-  const heroBuy = $('.phero__buy');
+  const heroBuy = $('.hero__side');
   if (buybar && heroBuy && 'IntersectionObserver' in window) {
     document.body.classList.add('has-buybar');
     new IntersectionObserver(([e]) => buybar.classList.toggle('is-on', !e.isIntersecting)).observe(heroBuy);
@@ -109,7 +128,7 @@
       if (n >= 0 && n < qs.length) {
         back.disabled = n === 0;
         next.disabled = !$('input:checked', qs[n]);
-        next.firstChild.textContent = n === qs.length - 1 ? 'Sonucumu Göster' : 'Devam';
+        next.firstChild.textContent = n === qs.length - 1 ? data.strings.show : data.strings.next;
         const first = $('input:checked', qs[n]) || $('input', qs[n]);
         first.focus({ preventScroll: true });
       }
@@ -130,6 +149,7 @@
       $('#r-desc').textContent = p.desc;
       $('#r-page').href = p.slug + '.html';
       $('#r-buy').href = p.url;
+      $('#r-buy').textContent = p.buy;
       const max = Math.max(...Object.values(scores), 1);
       $('#r-scores').innerHTML = Object.keys(scores)
         .sort((a, b) => scores[b] - scores[a])
