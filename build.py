@@ -13,7 +13,7 @@ SITE_URL = "https://efehamdioglu.com/hazar-canal/"
 # Önizleme sürümü arama motorlarında asıl siteyle yarışmasın. Asıl siteye dönüşünce False yapın.
 NOINDEX = True
 EMAIL = "hazarcanal@icloud.com"
-INSTAGRAM = "https://www.instagram.com/hazarcanall/"
+INSTAGRAM = "https://www.instagram.com/hazarcanalperfumes/"
 TIKTOK = "https://www.tiktok.com/@hazarcanalparfum"
 TESTER_URL = "https://www.shopier.com/Hazarcanal/44750828"
 
@@ -235,7 +235,7 @@ def header(cur):
     return f'''<a class="skip" href="#icerik">İçeriğe geç</a>
 <header class="top">
   <div class="wrap top__in">
-    <a class="brand" href="index.html" aria-label="Hazar Canal — ana sayfa">Hazar Canal<small lang="en">Parfumes</small></a>
+    <a class="brand" href="index.html" aria-label="Hazar Canal — ana sayfa">Hazar Canal<small lang="en">Perfumes</small></a>
     <nav class="nav" aria-label="Ana menü">
       <button type="button" class="nav__btn" aria-expanded="false" aria-controls="mega">Koleksiyon</button>
       {a("test.html", "Kişilik Testi")}
@@ -272,7 +272,7 @@ def footer():
     return f'''<footer class="foot">
   <div class="wrap">
     <div class="foot__grid">
-      <div><a class="brand" href="index.html">Hazar Canal<small lang="en">Parfumes</small></a>
+      <div><a class="brand" href="index.html">Hazar Canal<small lang="en">Perfumes</small></a>
         <p class="mute" style="margin-top:1.25rem;max-width:26ch">Parfüm Dünyasına Adım Atın</p></div>
       {col("Extrait de Parfum", [(p["name"], p["slug"] + ".html", "") for p in EXTRAIT])}
       {col("Eau de Parfum", [(p["name"], p["slug"] + ".html", "") for p in EDP])}
